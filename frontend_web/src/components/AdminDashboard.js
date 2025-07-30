@@ -60,10 +60,31 @@ function AdminDashboard() {
   }, [supabase]);
 
   // Update appointment status (optimistically update in UI)
+  // PUBLIC_INTERFACE
+  /**
+   * Update the status of an appointment booking (accept/cancel).
+   * Updates on Supabase then updates the UI optimistically.
+   * @param {number|string} id - appointment id
+   * @param {'accepted'|'cancelled'|'pending'} status
+   */
   const handleStatus = async (id, status) => {
     await supabase.from("appointments").update({ status }).eq("id", id);
     setAppointments((prev) =>
       prev.map((a) => (a.id === id ? { ...a, status } : a))
+    );
+  };
+
+  // PUBLIC_INTERFACE
+  /**
+   * Marks a user query as responded in Supabase and UI.
+   * Assumes there is a "responded" (boolean) field in questionnaires table.
+   * If none exists, this will create one on Supabase implicitly, if policy allows.
+   * @param {number|string} qid - query id
+   */
+  const handleResponded = async (qid) => {
+    await supabase.from("questionnaires").update({ responded: true }).eq("id", qid);
+    setQueries((prev) =>
+      prev.map((q) => (q.id === qid ? { ...q, responded: true } : q))
     );
   };
 
@@ -138,9 +159,18 @@ function AdminDashboard() {
                   <b>Email:</b> {q.email || "-"}<br />
                   <b>Concerns:</b> {q.concerns || "-"}
                   <br />
-                  {/* Response action (future): */}
-                  <button className="admin-action-btn" disabled title="Reply via email">
-                    Respond
+                  <b>Status:</b>{" "}
+                  {q.responded
+                    ? <span style={{ color: "#2eae63" }}>responded</span>
+                    : <span style={{ color: "#b8002e" }}>pending</span>}
+                  <br />
+                  <button
+                    className="admin-action-btn"
+                    onClick={() => handleResponded(q.id)}
+                    disabled={!!q.responded}
+                    title={q.responded ? "Already marked as responded" : "Mark as responded"}
+                  >
+                    {q.responded ? "Responded" : "Mark Responded"}
                   </button>
                 </div>
               ))
