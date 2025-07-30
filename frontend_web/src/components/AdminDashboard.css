@@ -1,0 +1,48 @@
+.admin-dashboard-section {
+  padding: 2.3rem 1rem;
+  background: var(--bg-secondary);
+  min-height: 380px;
+}
+.admin-dashboard-section h2 {
+  color: #2447A5;
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+.admin-section-block {
+  margin-bottom: 2.2rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 1px 8px #2447A514;
+  padding: 1rem 1.4rem 1.6rem 1.4rem;
+}
+.admin-section-block h3 {
+  color: #2447A5;
+  margin: 1rem 0 0.7rem 0;
+  font-size: 1.18rem;
+}
+.admin-appt-card, .admin-query-card {
+  padding: 0.8em 0.7em;
+  border-radius: 9px;
+  margin-bottom: 1rem;
+  background: #D2E6FA;
+  border-left: 5px solid #2447A5;
+}
+.admin-action-btn {
+  background: #2447A5;
+  color: #fff;
+  border: none;
+  border-radius: 11px;
+  padding: 0.38em 1.5em;
+  margin: 0.7em 0.7em 0 0;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.admin-action-btn.admin-cancel {
+  background: #b8002e;
+}
+.admin-action-btn[disabled] {
+  background: #bbb;
+  color: #fff;
+  cursor: not-allowed;
+}
