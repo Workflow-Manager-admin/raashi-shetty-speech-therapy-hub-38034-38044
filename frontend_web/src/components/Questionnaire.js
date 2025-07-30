@@ -6,7 +6,8 @@ import "./Questionnaire.css";
  * Interactive parent questionnaire (demo, does not persist beyond submit msg). 
  * For future: integrate with Supabase (see AdminDashboard.js for db/table).
  */
-export default function Questionnaire() {
+// PUBLIC_INTERFACE
+function Questionnaire() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -87,3 +88,5 @@ export default function Questionnaire() {
     </section>
   );
 }
+
+export default Questionnaire;

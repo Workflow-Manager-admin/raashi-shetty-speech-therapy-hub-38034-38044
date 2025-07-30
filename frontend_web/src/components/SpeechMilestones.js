@@ -6,7 +6,8 @@ import "./SpeechMilestones.css";
  * Speech and language milestone informational page for parents/guardians.
  * Provides age-grouped expectations and tips in an engaging, inviting style.
  */
-export default function SpeechMilestones() {
+// PUBLIC_INTERFACE
+function SpeechMilestones() {
   // Content: common milestones by age group
   const milestones = [
     {
@@ -110,3 +111,5 @@ export default function SpeechMilestones() {
     </section>
   );
 }
+
+export default SpeechMilestones;

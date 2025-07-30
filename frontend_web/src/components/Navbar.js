@@ -38,8 +38,8 @@ function Navbar() {
   // Always declare fresh array to avoid reference bugs on hot reloads
   const navLinks = [
     { to: "/", text: "Home" },
-    { to: "/milestones", text: "Milestones" },
-    { to: "/questionnaire", text: "Questionnaire" },
+    { to: "/milestones", text: "Milestones" }, // Main milestone page
+    { to: "/questionnaire", text: "Questionnaire" }, // Main questionnaire page
     { to: "/about", text: "About Raashi" },
     { to: "/videos", text: "Videos" },
     { to: "/book", text: "Book Appointment" },
