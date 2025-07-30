@@ -34,6 +34,8 @@ function Navbar() {
   };
 
   // Menu items with revised order and navigation – main app flow is Home ➔ Milestones ➔ Questionnaire
+  // --- ENSURE unique navLinks and refreshed live by location/path ---
+  // Always declare fresh array to avoid reference bugs on hot reloads
   const navLinks = [
     { to: "/", text: "Home" },
     { to: "/milestones", text: "Milestones" },
@@ -44,9 +46,16 @@ function Navbar() {
     { to: "/subscribe", text: "Subscribe" },
     { to: "/testimonials", text: "Testimonials" },
     { to: "/ai-chat", text: "Ask AI" },
+    // Admin link dynamically below
   ];
 
-  if (user && user.email && ADMIN_EMAILS.includes(user.email)) {
+  // Dynamically include admin route only for allowed user and avoid duplicates
+  if (
+    user &&
+    user.email &&
+    ADMIN_EMAILS.includes(user.email) &&
+    !navLinks.some(l => l.to === "/admin")
+  ) {
     navLinks.push({ to: "/admin", text: "Admin" });
   }
 

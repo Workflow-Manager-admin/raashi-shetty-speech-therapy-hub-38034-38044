@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./Questionnaire.css";
 
-// PUBLIC_INTERFACE
-/** Interactive parent questionnaire (demo, does not persist beyond submit msg). */
-function Questionnaire() {
+/**
+ * PUBLIC_INTERFACE
+ * Interactive parent questionnaire (demo, does not persist beyond submit msg). 
+ * For future: integrate with Supabase (see AdminDashboard.js for db/table).
+ */
+export default function Questionnaire() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -84,5 +87,3 @@ function Questionnaire() {
     </section>
   );
 }
-
-export default Questionnaire;
