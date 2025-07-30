@@ -60,31 +60,25 @@ function App() {
     <SupabaseContext.Provider value={{ supabase, user, setUser }}>
       <ThemeContext.Provider value={{ theme, setTheme }}>
         <Router>
-          <div className="App">
+          <div className="App luxury-app-bg">
             <Navbar />
             <main className="main-content">
               <Routes>
-                {/* Custom home layout contains Hero, About, and Questionnaire together */}
+                {/* Custom homepage: lavish About and Questionnaire as split, ultra-styled distinct sections. */}
                 <Route
                   path="/"
                   element={
                     <>
                       <HeroSection />
-                      <div style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        alignItems: "flex-start",
-                        justifyContent: "center",
-                        gap: "2.5rem",
-                        margin: "2.7rem 0 1.5rem 0"
-                      }}>
-                        <div style={{ flex: "1 1 400px", minWidth: 340, maxWidth: 600 }}>
+                      <div className="homepage-sections-lux">
+                        <section className="lux-block about-block">
                           <AboutRaashi />
-                        </div>
-                        <div style={{ flex: "1 1 340px", minWidth: 300, maxWidth: 510 }}>
+                        </section>
+                        <section className="lux-block questionnaire-block">
                           <Questionnaire />
-                        </div>
+                        </section>
                       </div>
+                      {/* Videos carousel could be previewed here if desired */}
                     </>
                   }
                 />
