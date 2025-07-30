@@ -1,0 +1,31 @@
+.payments-section {
+  padding: 2.2rem 1rem;
+  background: var(--bg-primary);
+  min-height: 330px;
+  text-align: center;
+}
+.payments-section h2 {
+  color: #2447A5;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.payments-section p {
+  color: #282c34;
+  font-size: 1.11rem;
+  margin-bottom: 1.3rem;
+}
+.payments-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  background: #D2E6FA;
+  border-radius: 11px;
+  padding: 2rem 1rem;
+  min-height: 120px;
+  font-weight: 600;
+  color: #2447A5;
+  font-size: 1.14rem;
+  box-shadow: 0 2px 7px #2447A511;
+}

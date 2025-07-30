@@ -1,0 +1,33 @@
+.profile-section {
+  padding: 2.2rem 1rem;
+  background: var(--bg-secondary);
+  min-height: 250px;
+  text-align: center;
+}
+.profile-section h2 {
+  color: #2447A5;
+  margin-bottom: 1.1rem;
+  font-size: 2rem;
+}
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-items: center;
+  max-width: 340px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 1px 8px #2447A513;
+  padding: 2rem 1.2rem 1.2rem 1.2rem;
+}
+.profile-btn {
+  background: #F6995C;
+  color: #fff;
+  border-radius: 13px;
+  padding: 0.52em 2em;
+  border: none;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1.06rem;
+}

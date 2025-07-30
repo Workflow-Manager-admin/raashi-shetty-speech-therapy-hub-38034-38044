@@ -1,0 +1,77 @@
+.questionnaire-section {
+  padding: 2.2rem 1rem;
+  background: var(--bg-secondary);
+  min-height: 310px;
+}
+
+.questionnaire-section h2 {
+  color: #2447A5;
+  text-align: center;
+  margin-bottom: 0.6rem;
+  font-size: 2rem;
+}
+.questionnaire-section p {
+  text-align: center;
+  color: #282c34;
+  margin-bottom: 1.3rem;
+}
+
+.questionnaire-form {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 1px 9px #2447A51e;
+  padding: 2rem 1.5rem 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.questionnaire-form label {
+  display: flex;
+  flex-direction: column;
+  color: #2447A5;
+  font-weight: 600;
+  font-size: 1.04rem;
+}
+
+.questionnaire-form input {
+  margin-top: 0.28rem;
+  background: #D2E6FA;
+  border: 1.3px solid #2447A5;
+  color: #282c34;
+  border-radius: 5px;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.questionnaire-btn {
+  background: #F6995C;
+  color: #fff;
+  padding: 0.55em 1.3em;
+  border-radius: 16px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 0.7rem;
+}
+
+.questionnaire-success {
+  background: #D2E6FA;
+  color: #2447A5;
+  border: 1.3px solid #2447A5;
+  border-radius: 5px;
+  padding: 0.65em 1em;
+  margin: 0 auto 1.2rem auto;
+  text-align: center;
+  max-width: 350px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .questionnaire-form {
+    padding: 1rem 0.18rem;
+  }
+}
