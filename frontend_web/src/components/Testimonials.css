@@ -1,6 +1,10 @@
 .testimonials-section {
   padding: 2.2rem 1rem;
   background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .testimonials-section h2 {
@@ -19,11 +23,11 @@
 }
 
 .testimonial-card {
-  background: #D2E6FA;
+  background: #fff;
   border-left: 8px solid #2447A5;
-  border-radius: 14px;
-  box-shadow: 0 2px 7px #2447A516;
-  padding: 1.1rem 1.2rem 1.1rem 1.5rem;
+  border-radius: 2.2rem;
+  box-shadow: 0 4px 40px #2447A511, 0 1.5px 12px #F6995C14;
+  padding: 1.5rem 2rem 1.5rem 2.2rem;
 }
 
 .testimonial-content {

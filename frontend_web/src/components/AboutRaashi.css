@@ -1,5 +1,5 @@
 .about-raashi {
-  padding: 2rem 1rem;
+  padding: 2.7rem 1rem;
   background: none;
   display: flex;
   justify-content: center;
@@ -13,9 +13,9 @@
   align-items: center;
   max-width: 850px;
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 15px rgba(36, 71, 165, 0.07);
-  padding: 2rem 1rem;
+  border-radius: 2.2rem;
+  box-shadow: 0 4px 40px #2447A511, 0 1.5px 12px #F6995C14;
+  padding: 2rem 2.3rem 2.3rem 2.3rem;
 }
 
 .about-photo {

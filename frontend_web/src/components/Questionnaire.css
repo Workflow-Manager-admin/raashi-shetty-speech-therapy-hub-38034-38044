@@ -2,6 +2,9 @@
   padding: 2.2rem 1rem;
   background: none;
   min-height: 310px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .questionnaire-section h2 {
@@ -17,12 +20,12 @@
 }
 
 .questionnaire-form {
-  max-width: 420px;
+  max-width: 470px;
   margin: 0 auto;
   background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 1px 9px #2447A51e;
-  padding: 2rem 1.5rem 1.4rem 1.5rem;
+  border-radius: 2.2rem;
+  box-shadow: 0 4px 40px #2447A511, 0 1.5px 12px #F6995C14;
+  padding: 2.2rem 2.2rem 1.7rem 2.2rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;

@@ -1,8 +1,23 @@
 .ai-chat-section {
   padding: 2.2rem 1rem;
+  /* Luxury card block – unify with lux-block on home */
   background: none;
   min-height: 330px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.ai-chat-box {
+  max-width: 470px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 2.2rem;
+  box-shadow: 0 4px 40px #2447A511, 0 1.5px 12px #F6995C14;
+  padding: 1.1rem 1.1rem 1.3rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .ai-chat-section h2 {

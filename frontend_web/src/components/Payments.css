@@ -3,6 +3,9 @@
   background: none;
   min-height: 330px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 .payments-section h2 {
   color: #2447A5;
@@ -20,12 +23,12 @@
   gap: 0.7rem;
   align-items: center;
   justify-content: center;
-  background: #D2E6FA;
-  border-radius: 11px;
-  padding: 2rem 1rem;
+  background: #fff;
+  border-radius: 2.2rem;
+  padding: 2.1rem 2rem;
   min-height: 120px;
   font-weight: 600;
   color: #2447A5;
   font-size: 1.14rem;
-  box-shadow: 0 2px 7px #2447A511;
+  box-shadow: 0 4px 40px #2447A511, 0 1.5px 12px #F6995C14;
 }

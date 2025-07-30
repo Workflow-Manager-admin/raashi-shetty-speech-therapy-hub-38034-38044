@@ -3,6 +3,9 @@
   background: none;
   min-height: 250px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 .subscription-section h2 {
   color: #2447A5;
@@ -19,10 +22,11 @@
   color: #fff;
   border-radius: 18px;
   font-size: 1.01rem;
-  padding: 0.65em 1.5em;
+  padding: 0.65em 1.6em;
   border: none;
   margin: 0.5rem 0;
   font-weight: 600;
+  box-shadow: 0 2px 9px #2447A511;
 }
 .subscription-success {
   background: #D2E6FA;
