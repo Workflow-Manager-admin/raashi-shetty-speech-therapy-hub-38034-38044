@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import { SupabaseContext, ThemeContext } from "../App";
 import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
@@ -15,6 +15,7 @@ function Navbar() {
   const { user, setUser, supabase } = useContext(SupabaseContext);
   const { theme, setTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Burger menu open/close state
   const [menuOpen, setMenuOpen] = useState(false);
@@ -91,21 +92,31 @@ function Navbar() {
           <ul className="burger-links">
             {navLinks.map(link => (
               <li key={link.text}>
-                <Link
+                <NavLink
                   to={link.to}
-                  className="burger-link"
+                  className={({ isActive }) =>
+                    "burger-link" + (isActive ||
+                       // show current for composite match (for nested routes) - fallback: location.pathname.startsWith(link.to)
+                       (link.to !== "/" && location.pathname.startsWith(link.to)) ? " current-link" : "")
+                  }
                   onClick={() => setMenuOpen(false)}
+                  end={link.to === "/"}
                 >
                   {link.text}
-                </Link>
+                </NavLink>
               </li>
             ))}
             {user ? (
               <>
                 <li>
-                  <Link to="/profile" title="Profile" className="burger-link" onClick={() => setMenuOpen(false)}>
+                  <NavLink
+                    to="/profile"
+                    title="Profile"
+                    className={({ isActive }) => "burger-link" + (isActive ? " current-link" : "")}
+                    onClick={() => setMenuOpen(false)}
+                  >
                     <FaUserCircle size={22} style={{ verticalAlign: "middle", marginRight: 8 }} /> My Profile
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
                   <button className="btn burger-logout" onClick={handleLogout}>Log Out</button>
@@ -113,7 +124,9 @@ function Navbar() {
               </>
             ) : (
               <li>
-                <Link to="/auth" className="burger-link" onClick={() => setMenuOpen(false)}>Sign In</Link>
+                <NavLink to="/auth" className={({ isActive }) => "burger-link" + (isActive ? " current-link" : "")} onClick={() => setMenuOpen(false)}>
+                  Sign In
+                </NavLink>
               </li>
             )}
             <li>

@@ -144,6 +144,14 @@
   outline: none;
 }
 
+/* Highlight the current/active route in the navigation */
+.burger-link.current-link, .burger-link[aria-current="page"] {
+  background: var(--luxury-accent);
+  color: #fff !important;
+  font-weight: 700;
+  box-shadow: 0 1.5px 9px #f6995c13;
+}
+
 .burger-logout {
   font-size: 1.11rem;
   padding: 0.54em 1.7em;
