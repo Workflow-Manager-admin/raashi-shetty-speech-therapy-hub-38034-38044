@@ -72,9 +72,10 @@
   }
 }
 
-/* About/Questionnaire luxury tweaks */
+/* About/Questionnaire/Milestones luxury tweaks */
 .about-block { box-shadow: 0 4px 34px #2447A510, 0 3px 8px #2447A520; }
 .questionnaire-block { box-shadow: 0 12px 38px #F6995C0F, 0 1.5px 9px #2447A520; }
+.milestone-block { box-shadow: 0 8px 30px #2447A509, 0 1.3px 7px #F6995C0C; }
 
 .App {
   text-align: center;

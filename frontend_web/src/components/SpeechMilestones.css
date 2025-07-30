@@ -1,0 +1,114 @@
+.milestones-section {
+  background: var(--bg-secondary);
+  min-height: 420px;
+  padding: 2.5rem 1rem 2.1rem 1rem;
+  text-align: center;
+}
+
+.milestones-section h2 {
+  color: #2447A5;
+  font-size: 2.4rem;
+  margin-bottom: 0.34rem;
+}
+
+.milestones-intro {
+  color: #282c34;
+  font-size: 1.14rem;
+  margin-bottom: 1.9rem;
+}
+
+.milestones-cards-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.2rem;
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: 2.2rem;
+}
+
+.milestone-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 28px #2447A511, 0 1.5px 8px #F6995C14;
+  padding: 1.3rem 1.5rem 1rem 1.5rem;
+  min-width: 230px;
+  max-width: 350px;
+  flex: 1 1 310px;
+  text-align: left;
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-left: 7px solid #2447A5;
+  transition: box-shadow 0.28s;
+}
+
+.milestone-card h3 {
+  color: #F6995C;
+  font-size: 1.32rem;
+  margin-bottom: 0.62rem;
+}
+
+.milestone-card ul {
+  padding-left: 1.12em;
+  margin: 0 0 0.6em 0;
+}
+
+.milestone-card li {
+  color: #282c34;
+  font-size: 1.01rem;
+  margin-bottom: 0.33em;
+}
+
+.milestone-tips {
+  margin-top: 0.4em;
+  background: #D2E6FABB;
+  border-radius: 10px;
+  padding: 0.39em 0.7em;
+  font-size: .97em;
+  color: #2447A5;
+}
+
+.milestone-tips ul {
+  padding-left: 1.03em;
+  margin: 0.32em 0 0 0;
+}
+
+.milestone-btn {
+  display: inline-block;
+  background: #F6995C;
+  color: #fff !important;
+  border-radius: 14px;
+  font-size: 1.01rem;
+  padding: 0.61em 1.4em;
+  margin: 0.18rem 0.28rem;
+  text-decoration: none;
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 1px 7px #2447A511;
+  transition: background 0.20s;
+}
+
+.milestone-btn:hover {
+  background: #2447A5;
+  color: #fff;
+}
+
+.milestones-help-cta {
+  margin-top: 1.6rem;
+}
+
+/* Responsive for mobile/tablet */
+@media (max-width: 950px) {
+  .milestones-cards-wrap {
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: stretch;
+  }
+  .milestone-card {
+    max-width: 99vw;
+    min-width: 0;
+    margin: 0 auto 1.2rem auto;
+  }
+}

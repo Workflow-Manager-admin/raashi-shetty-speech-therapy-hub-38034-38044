@@ -17,6 +17,7 @@ import Auth from "./components/Auth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminDashboard from "./components/AdminDashboard";
 import AdminRoute from "./components/AdminRoute";
+import SpeechMilestones from "./components/SpeechMilestones";
 import "./App.css";
 // Import global carousel styles for react-slick (to support VideosGallery carousel correctly)
 import "slick-carousel/slick/slick.css";
@@ -64,7 +65,7 @@ function App() {
             <Navbar />
             <main className="main-content">
               <Routes>
-                {/* Custom homepage: lavish About and Questionnaire as split, ultra-styled distinct sections. */}
+                {/* Homepage: About (intro box) only, per new site organization */}
                 <Route
                   path="/"
                   element={
@@ -74,21 +75,29 @@ function App() {
                         <section className="lux-block about-block">
                           <AboutRaashi />
                         </section>
-                        <section className="lux-block questionnaire-block">
-                          <Questionnaire />
-                        </section>
                       </div>
-                      {/* Videos carousel could be previewed here if desired */}
                     </>
                   }
                 />
+                {/* Second main section: Milestones (for parents) */}
+                <Route path="/milestones" element={
+                  <section className="lux-block milestone-block" style={{margin: "2rem auto", maxWidth: 1150}}>
+                    <SpeechMilestones />
+                  </section>
+                } />
+                {/* Questionnaire now on third main page */}
+                <Route path="/questionnaire" element={
+                  <section className="lux-block questionnaire-block" style={{margin: "2rem auto", maxWidth: 750}}>
+                    <Questionnaire />
+                  </section>
+                } />
+                {/* Everything else as before */}
                 <Route path="/about" element={<AboutRaashi />} />
                 <Route path="/videos" element={<VideosGallery />} />
                 <Route path="/book" element={<Booking />} />
                 <Route path="/payments" element={<Payments />} />
                 <Route path="/subscribe" element={<Subscription />} />
                 <Route path="/testimonials" element={<Testimonials />} />
-                <Route path="/questionnaire" element={<Questionnaire />} />
                 <Route path="/ai-chat" element={<AIChat />} />
                 <Route path="/profile" element={
                   <ProtectedRoute user={user}><Profile /></ProtectedRoute>

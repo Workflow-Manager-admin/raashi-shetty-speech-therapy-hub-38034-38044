@@ -33,16 +33,17 @@ function Navbar() {
     navigate("/");
   };
 
-  // Menu items (luxury, clear, modern)
+  // Menu items with revised order and navigation – main app flow is Home ➔ Milestones ➔ Questionnaire
   const navLinks = [
     { to: "/", text: "Home" },
+    { to: "/milestones", text: "Milestones" },
+    { to: "/questionnaire", text: "Questionnaire" },
     { to: "/about", text: "About Raashi" },
     { to: "/videos", text: "Videos" },
     { to: "/book", text: "Book Appointment" },
     { to: "/subscribe", text: "Subscribe" },
     { to: "/testimonials", text: "Testimonials" },
-    { to: "/questionnaire", text: "Questionnaire" },
-    { to: "/ai-chat", text: "Ask AI" }
+    { to: "/ai-chat", text: "Ask AI" },
   ];
 
   if (user && user.email && ADMIN_EMAILS.includes(user.email)) {
