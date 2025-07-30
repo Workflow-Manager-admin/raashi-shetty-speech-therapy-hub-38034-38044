@@ -61,7 +61,30 @@ function App() {
             <Navbar />
             <main className="main-content">
               <Routes>
-                <Route path="/" element={<HeroSection />} />
+                {/* Custom home layout contains Hero, About, and Questionnaire together */}
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <HeroSection />
+                      <div style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        alignItems: "flex-start",
+                        justifyContent: "center",
+                        gap: "2.5rem",
+                        margin: "2.7rem 0 1.5rem 0"
+                      }}>
+                        <div style={{ flex: "1 1 400px", minWidth: 340, maxWidth: 600 }}>
+                          <AboutRaashi />
+                        </div>
+                        <div style={{ flex: "1 1 340px", minWidth: 300, maxWidth: 510 }}>
+                          <Questionnaire />
+                        </div>
+                      </div>
+                    </>
+                  }
+                />
                 <Route path="/about" element={<AboutRaashi />} />
                 <Route path="/videos" element={<VideosGallery />} />
                 <Route path="/book" element={<Booking />} />
