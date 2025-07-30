@@ -15,6 +15,8 @@ import AIChat from "./components/AIChat";
 import Profile from "./components/Profile";
 import Auth from "./components/Auth";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminDashboard from "./components/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
 import "./App.css";
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
@@ -23,7 +25,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // PUBLIC_INTERFACE
 export const SupabaseContext = createContext(null);
-// PUBLIC_INTERFACE
+ // PUBLIC_INTERFACE
 export const ThemeContext = createContext(null);
 
 /**
@@ -70,6 +72,9 @@ function App() {
                 <Route path="/ai-chat" element={<AIChat />} />
                 <Route path="/profile" element={
                   <ProtectedRoute user={user}><Profile /></ProtectedRoute>
+                } />
+                <Route path="/admin" element={
+                  <AdminRoute user={user}><AdminDashboard /></AdminRoute>
                 } />
                 <Route path="/auth" element={<Auth />} />
                 {/* Default fallback */}

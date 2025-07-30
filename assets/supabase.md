@@ -44,3 +44,10 @@
 - All requests use the `supabase-js` v2 client.
 - All sensitive keys are handled through the `.env` file for security.
 - After DB and RLS corrections, the frontend can securely book appointments, fetch videos, manage user subscriptions, and authenticate users.
+
+## Admin Authentication
+
+- Admin access is restricted via email allow-list in the frontend. To grant admin access, add the admin's email to the `ADMIN_EMAILS` array in both AdminDashboard.js and AdminRoute.js.
+- No Supabase role is required: simply ensure the allowed admin user's email matches one on the list.
+- All critical admin UI and management areas are protected by this logic in the React app. 
+

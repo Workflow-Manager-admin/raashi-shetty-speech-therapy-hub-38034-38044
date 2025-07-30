@@ -4,6 +4,10 @@ import { SupabaseContext, ThemeContext } from "../App";
 import { FaUserCircle } from "react-icons/fa";
 import "./Navbar.css";
 
+const ADMIN_EMAILS = [
+  "raashishetty.speech@gmail.com", // example, update with real admin emails
+];
+
 // PUBLIC_INTERFACE
 /** Top navigation bar, responsive and minimal. */
 function Navbar() {
@@ -33,6 +37,12 @@ function Navbar() {
         <li><Link to="/testimonials">Testimonials</Link></li>
         <li><Link to="/questionnaire">Questionnaire</Link></li>
         <li><Link to="/ai-chat">Ask AI</Link></li>
+        {/* Show admin link if user is admin */}
+        {user && user.email && ADMIN_EMAILS.includes(user.email) && (
+          <li>
+            <Link to="/admin">Admin</Link>
+          </li>
+        )}
         {user
           ? (
             <>
