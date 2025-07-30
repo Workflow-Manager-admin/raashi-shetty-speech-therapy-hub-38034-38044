@@ -1,6 +1,6 @@
 .payments-section {
   padding: 2.2rem 1rem;
-  background: var(--bg-primary);
+  background: none;
   min-height: 330px;
   text-align: center;
 }

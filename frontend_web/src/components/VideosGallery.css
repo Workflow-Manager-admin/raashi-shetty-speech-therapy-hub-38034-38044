@@ -1,6 +1,6 @@
 .videos-gallery {
   padding: 2.5rem 1rem;
-  background: var(--bg-primary);
+  background: none;
   min-height: 390px;
 }
 

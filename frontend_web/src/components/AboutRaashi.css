@@ -1,6 +1,6 @@
 .about-raashi {
   padding: 2rem 1rem;
-  background: var(--bg-secondary);
+  background: none;
   display: flex;
   justify-content: center;
   align-items: center;
