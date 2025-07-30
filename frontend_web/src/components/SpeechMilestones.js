@@ -77,35 +77,41 @@ function SpeechMilestones() {
   ];
 
   return (
-    <section className="milestones-section">
+    <section className="milestones-section milestones-standalone-page">
       <h2>Speech &amp; Language Milestones</h2>
       <p className="milestones-intro">
-        Children develop communication skills at their own pace. 
+        Children develop communication skills at their own pace.
         Here’s a guide to typical speech and language milestones by age.<br />
-        <span style={{color:"#2447A5",fontWeight:600}}>If you notice significant delays, don't hesitate to reach out — early support matters!</span>
+        <span style={{ color: "#2447A5", fontWeight: 600 }}>If you notice significant delays, don't hesitate to reach out — early support matters!</span>
       </p>
-      <div className="milestones-cards-wrap">
-        {milestones.map((group, idx) => (
-          <div className="milestone-card" key={idx}>
-            <h3>{group.age}</h3>
-            <ul>
-              {group.items.map((item, n) => (
-                <li key={n}>{item}</li>
-              ))}
-            </ul>
-            <div className="milestone-tips">
-              <b>Tips:</b>
+      {/* Visually distinct, scrollable frame for milestone cards */}
+      <div className="milestones-scroll-container" tabIndex={0} role="region" aria-label="Speech and Language Milestones Timeline">
+        <div className="milestones-cards-wrap">
+          {milestones.map((group, idx) => (
+            <div className="milestone-card" key={idx}>
+              <h3>{group.age}</h3>
               <ul>
-                {group.tips.map((tip, t) => <li key={t}>{tip}</li>)}
+                {group.items.map((item, n) => (
+                  <li key={n}>{item}</li>
+                ))}
               </ul>
+              <div className="milestone-tips">
+                <b>Tips:</b>
+                <ul>
+                  {group.tips.map((tip, t) => <li key={t}>{tip}</li>)}
+                </ul>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <div className="milestones-help-cta">
         <p>
-          <b>Concerned or need advice?</b> <br/>
+          <b>Concerned or need advice?</b> <br />
           <a className="btn milestone-btn" href="/book">Book a Consultation</a> or <a className="btn milestone-btn" href="/ai-chat">Ask AI for Info</a>
+        </p>
+        <p style={{ marginTop: "1.1em" }}>
+          <a className="btn btn-secondary milestone-btn" href="/">← Return Home</a>
         </p>
       </div>
     </section>

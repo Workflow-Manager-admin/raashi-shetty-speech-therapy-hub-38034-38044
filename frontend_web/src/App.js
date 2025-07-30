@@ -79,12 +79,13 @@ function App() {
                     </>
                   }
                 />
-                {/* Second main section: Milestones (for parents) */}
-                <Route path="/milestones" element={
-                  <section className="lux-block milestone-block" style={{margin: "2rem auto", maxWidth: 1150}}>
+                {/* Milestones: dedicated scrollable main page route */}
+                <Route
+                  path="/milestones"
+                  element={
                     <SpeechMilestones />
-                  </section>
-                } />
+                  }
+                />
                 {/* Questionnaire now on third main page */}
                 <Route path="/questionnaire" element={
                   <section className="lux-block questionnaire-block" style={{margin: "2rem auto", maxWidth: 750}}>

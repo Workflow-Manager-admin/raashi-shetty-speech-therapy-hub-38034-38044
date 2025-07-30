@@ -8,6 +8,56 @@
   align-items: center;
 }
 
+/* Dedicated milestones full-page container - makes vertical scroll possible for long content */
+.milestones-standalone-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 86vh;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+}
+
+/* Stylish scrollable container for milestone cards */
+.milestones-scroll-container {
+  width: 100%;
+  max-width: 1100px;
+  height: 47vh;
+  min-height: 340px;
+  max-height: 430px;
+  background: #ffffffcc;
+  border-radius: 2.2rem;
+  box-shadow: 0 6px 50px #2447A524, 0 1.5px 16px #F6995C14;
+  overflow-y: auto;
+  margin: 0 auto 1.1rem auto;
+  padding: 2.2rem 1.4rem 2.2rem 1.4rem;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: #2447A5 #D2E6FA;
+  box-sizing: border-box;
+  transition: box-shadow 0.24s;
+}
+
+.milestones-scroll-container:focus {
+  outline: 2px solid #F6995C88;
+  box-shadow: 0 0 0 3px #F6995C22, 0 6px 50px #2447A52c, 0 1.5px 16px #F6995C14;
+}
+
+
+/* Milestones horizontal scroll for extra-small screens */
+@media (max-width: 700px) {
+  .milestones-scroll-container {
+    padding: 0.3rem 0.1rem 1.2rem 0.1rem;
+    height: 62vw;
+    min-height: 220px;
+    max-height: 60vh;
+    border-radius: 1.09rem;
+  }
+}
+
+
 .milestones-section h2 {
   color: #2447A5;
   font-size: 2.4rem;
