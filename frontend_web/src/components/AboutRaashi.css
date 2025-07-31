@@ -1,0 +1,63 @@
+.about-raashi {
+  padding: 2.7rem 1rem;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  max-width: 850px;
+  background: #fff;
+  border-radius: 2.2rem;
+  box-shadow: 0 4px 40px #2447A511, 0 1.5px 12px #F6995C14;
+  padding: 2rem 2.3rem 2.3rem 2.3rem;
+}
+
+.about-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2447A5;
+}
+
+.about-text {
+  flex: 1;
+  color: #282c34;
+}
+
+.about-text h2 {
+  color: #2447A5;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.about-btn {
+  display: inline-block;
+  margin-top: 1.1rem;
+  background: #2447A5;
+  color: #fff;
+  border-radius: 20px;
+  padding: 0.5em 1.4em;
+  border: none;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.01rem;
+}
+
+@media (max-width: 800px) {
+  .about-inner {
+    flex-direction: column;
+    gap: 1.3rem;
+    padding: 1rem 0.5rem;
+    text-align: center;
+  }
+  .about-photo {
+    margin-bottom: 0.9rem;
+  }
+}
