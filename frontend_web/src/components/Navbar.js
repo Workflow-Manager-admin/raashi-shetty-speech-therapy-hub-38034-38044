@@ -1,15 +1,58 @@
 import React, { useContext, useState } from "react";
 import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import { SupabaseContext, ThemeContext } from "../App";
-import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaUserCircle,
+  FaBars,
+  FaTimes,
+  FaHome,
+  FaStar,
+  FaUserFriends,
+  FaVideo,
+  FaCalendarCheck,
+  FaChalkboardTeacher,
+  FaGift,
+  FaSmile,
+  FaMagic,
+  FaRobot,
+  FaKey,
+  FaQuestionCircle,
+  FaCommentAlt
+} from "react-icons/fa";
 import "./Navbar.css";
+
+/*
+  Child-friendly playful icons by route.
+  - Home: speech bubble (FaCommentAlt)
+  - Milestones: star (FaStar)
+  - Questionnaire: question (FaQuestionCircle)
+  - About: teacher (FaChalkboardTeacher)
+  - Videos: video (FaVideo)
+  - Book: calendar check (FaCalendarCheck)
+  - Subscribe: gift (FaGift)
+  - Testimonials: smile (FaSmile)
+  - Ask AI: robot (FaRobot)
+  - Admin: key (FaKey)
+*/
+const NAV_ICONS = {
+  "/": <FaCommentAlt style={{ marginRight: 8, color: "#F6995C", verticalAlign: "middle" }}/>,
+  "/milestones": <FaStar style={{ marginRight: 8, color: "#F6995C", verticalAlign: "middle" }}/>,
+  "/questionnaire": <FaQuestionCircle style={{ marginRight: 8, color: "#2447A5", verticalAlign: "middle" }}/>,
+  "/about": <FaChalkboardTeacher style={{ marginRight: 8, color: "#2447A5", verticalAlign: "middle" }}/>,
+  "/videos": <FaVideo style={{ marginRight: 8, color: "#F6995C", verticalAlign: "middle" }}/>,
+  "/book": <FaCalendarCheck style={{ marginRight: 8, color: "#2447A5", verticalAlign: "middle" }}/>,
+  "/subscribe": <FaGift style={{ marginRight: 8, color: "#F6995C", verticalAlign: "middle" }}/>,
+  "/testimonials": <FaSmile style={{ marginRight: 8, color: "#2447A5", verticalAlign: "middle" }}/>,
+  "/ai-chat": <FaRobot style={{ marginRight: 8, color: "#F6995C", verticalAlign: "middle" }}/>,
+  "/admin": <FaKey style={{ marginRight: 8, color: "#2447A5", verticalAlign: "middle" }}/>
+};
 
 const ADMIN_EMAILS = [
   "raashishetty.speech@gmail.com", // example, update with real admin emails
 ];
 /**
  * PUBLIC_INTERFACE
- * Top navigation bar: luxury style with burger menu overlay, brand-only header, and accessible links.
+ * Top navigation bar: elevated playful modern style, colorful gradient background, playful accent icons, prominent logo.
  */
 function Navbar() {
   const { user, setUser, supabase } = useContext(SupabaseContext);
@@ -35,22 +78,20 @@ function Navbar() {
   };
 
   // Menu items with revised order and navigation – main app flow is Home ➔ Milestones ➔ Questionnaire
-  // --- ENSURE unique navLinks and refreshed live by location/path ---
-  // Always declare fresh array to avoid reference bugs on hot reloads
+  // Add playful icons and accent bubbles per nav item
   const navLinks = [
     { to: "/", text: "Home" },
-    { to: "/milestones", text: "Milestones" }, // Main milestone page
-    { to: "/questionnaire", text: "Questionnaire" }, // Main questionnaire page
+    { to: "/milestones", text: "Milestones" },
+    { to: "/questionnaire", text: "Questionnaire" },
     { to: "/about", text: "About Raashi" },
     { to: "/videos", text: "Videos" },
     { to: "/book", text: "Book Appointment" },
     { to: "/subscribe", text: "Subscribe" },
     { to: "/testimonials", text: "Testimonials" },
-    { to: "/ai-chat", text: "Ask AI" },
+    { to: "/ai-chat", text: "Ask AI" }
     // Admin link dynamically below
   ];
 
-  // Dynamically include admin route only for allowed user and avoid duplicates
   if (
     user &&
     user.email &&
@@ -62,8 +103,31 @@ function Navbar() {
 
   return (
     <header className={`navbar luxury-navbar navbar-${theme}`}>
+      {/* Logo with playful bubble icon and fun accent */}
       <div className="navbar-brand">
-        <Link to="/" className="logo">Speech Bridge</Link>
+        <Link to="/" className="logo">
+          {/* Icon bubble for child speech theme */}
+          <span
+            style={{
+              display: "inline-block",
+              borderRadius: "50%",
+              width: 36,
+              height: 36,
+              background: "linear-gradient(135deg, #F6995C 22%, #D2E6FA 100%)",
+              boxShadow: "0 2px 12px #f6995c19",
+              marginRight: 11,
+              verticalAlign: "middle",
+              textAlign: "center",
+              lineHeight: "36px"
+            }}
+            aria-hidden="true"
+          >
+            <FaCommentAlt style={{ color: "#2447A5", fontSize: 20, verticalAlign: "middle" }} />
+          </span>
+          <span className="logo-title">
+            Speech <span className="brand-accent">Bridge</span>
+          </span>
+        </Link>
       </div>
       <button
         className="burger-icon"
@@ -74,7 +138,7 @@ function Navbar() {
       >
         <FaBars size={28} />
       </button>
-      {/* Stylish slideover/overlay menu */}
+      {/* Playful, elegant menu overlay */}
       <nav
         className={`burger-menu-ol luxury-drawer-menu${menuOpen ? " open" : ""}`}
         id="site-menu"
@@ -96,13 +160,19 @@ function Navbar() {
                   to={link.to}
                   className={({ isActive }) =>
                     "burger-link" + (isActive ||
-                       // show current for composite match (for nested routes) - fallback: location.pathname.startsWith(link.to)
                        (link.to !== "/" && location.pathname.startsWith(link.to)) ? " current-link" : "")
                   }
                   onClick={() => setMenuOpen(false)}
                   end={link.to === "/"}
                 >
-                  {link.text}
+                  <span
+                    className="navlink-icon"
+                    aria-hidden="true"
+                    style={{ display: "inline-block", minWidth: 16 }}
+                  >
+                    {(NAV_ICONS[link.to] || null)}
+                  </span>
+                  <span className="navlink-text">{link.text}</span>
                 </NavLink>
               </li>
             ))}
@@ -140,7 +210,6 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        {/* Click backdrop to close */}
         <div className="burger-backdrop" onClick={() => setMenuOpen(false)} tabIndex={-1} />
       </nav>
     </header>
