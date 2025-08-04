@@ -88,14 +88,15 @@ function App() {
                           Propagate explicit margin and maxWidth for bulletproof consistency.
                         */}
                         <div
-                          className="homepage-sections-lux"
+                          className="homepage-sections-lux about-raashi-fullwidth"
                           style={{
-                            margin: "3.6rem auto 2.1rem auto",
-                            maxWidth: "1260px",
-                            padding: "0 1rem"
+                            margin: 0,
+                            maxWidth: "none",
+                            width: "100%",
+                            padding: 0,
                           }}
                         >
-                          <section className="lux-block about-block">
+                          <section className="lux-block about-block about-block-fullwidth">
                             <AboutRaashi />
                           </section>
                         </div>
@@ -120,14 +121,15 @@ function App() {
                     path="/about"
                     element={
                       <div
-                        className="homepage-sections-lux"
+                        className="homepage-sections-lux about-raashi-fullwidth"
                         style={{
-                          margin: "3.6rem auto 2.1rem auto",
-                          maxWidth: "1260px",
-                          padding: "0 1rem"
+                          margin: 0,
+                          maxWidth: "none",
+                          width: "100%",
+                          padding: 0,
                         }}
                       >
-                        <section className="lux-block about-block">
+                        <section className="lux-block about-block about-block-fullwidth">
                           <AboutRaashi />
                         </section>
                       </div>
