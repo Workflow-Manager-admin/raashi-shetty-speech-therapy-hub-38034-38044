@@ -7,7 +7,11 @@ function AboutRaashi() {
   return (
     <section className="about-raashi">
       <div className="about-inner">
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=face&w=320&q=80" alt="Raashi Shetty Portrait" className="about-photo" />
+        <img
+          src="https://cdn.pixabay.com/photo/2017/02/15/12/12/child-2065537_1280.jpg"
+          alt="Raashi Shetty with child client"
+          className="about-photo"
+        />
         <div className="about-text">
           <h2>About Raashi Shetty</h2>
           <p>
