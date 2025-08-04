@@ -4,6 +4,7 @@ import "./VideosGallery.css";
 // Import slick-carousel styles
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import curatedVideos from "./speech_therapy_videos_curated.json";
 
 /*
   Video Gallery component for Speech Bridge by Raashi Shetty
@@ -26,9 +27,7 @@ function VideosGallery() {
 
   // Load curated videos JSON (edit speech_therapy_videos_curated.json to update selection)
   useEffect(() => {
-    import("./speech_therapy_videos_curated.json").then(data => {
-      setVideos(data.default || data);
-    });
+    setVideos(curatedVideos);
   }, []);
 
   // react-slick carousel options
