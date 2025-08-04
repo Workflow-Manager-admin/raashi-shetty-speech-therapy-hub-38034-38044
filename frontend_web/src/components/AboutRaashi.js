@@ -12,8 +12,8 @@ function AboutRaashi() {
       <span className="about-float-bubble about-float-bubble-3" aria-hidden="true"></span>
       <div className="about-inner">
         <img
-          src="https://cdn.pixabay.com/photo/2017/02/15/12/12/child-2065537_1280.jpg"
-          alt="Raashi Shetty with child client"
+          src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=facearea&w=400&h=400&facepad=2&q=80"
+          alt="Professional portrait of Raashi Shetty, Speech Therapist (placeholder)"
           className="about-photo"
         />
         <div className="about-text">
