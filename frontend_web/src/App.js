@@ -105,7 +105,16 @@ function App() {
                     </section>
                   } />
                   {/* Everything else as before */}
-                  <Route path="/about" element={<AboutRaashi />} />
+                  <Route
+                    path="/about"
+                    element={
+                      <div className="homepage-sections-lux">
+                        <section className="lux-block about-block">
+                          <AboutRaashi />
+                        </section>
+                      </div>
+                    }
+                  />
                   <Route path="/videos" element={<VideosGallery />} />
                   <Route path="/book" element={<Booking />} />
                   <Route path="/payments" element={<Payments />} />
