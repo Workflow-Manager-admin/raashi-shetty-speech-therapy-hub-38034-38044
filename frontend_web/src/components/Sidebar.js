@@ -1,41 +1,53 @@
 import React, { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { SupabaseContext } from "../App";
-import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
+// Thematic playful section icons:
+import {
+  FaHome,
+  FaChalkboardTeacher,
+  FaStar,
+  FaVideo,
+  FaCalendarCheck,
+  FaCreditCard,
+  FaGift,
+  FaSmile,
+  FaQuestionCircle,
+  FaRobot,
+  FaUserCircle,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 import "./Sidebar.css";
 
+// PUBLIC_INTERFACE
 /**
- * Main navigation entries.
- * Ensures 'Home' ("/") is always present for site entry consistency.
+ * Sidebar link definitions with playful icons matching main nav theme.
  */
 const SIDEBAR_LINKS = [
-  { to: "/", text: "Home" },
-  { to: "/about", text: "About Raashi" },
-  { to: "/milestones", text: "Milestones" },
-  { to: "/videos", text: "Videos Gallery" },
-  { to: "/book", text: "Book Appointment" },
-  { to: "/payments", text: "Payments" },
-  { to: "/subscribe", text: "Subscription" },
-  { to: "/testimonials", text: "Testimonials" },
-  { to: "/questionnaire", text: "Questionnaire" },
-  { to: "/ai-chat", text: "AI Chat" },
-  { to: "/profile", text: "User Profile" }
+  { to: "/", text: "Home", icon: <FaHome color="#F6995C" /> },
+  { to: "/about", text: "About Raashi", icon: <FaChalkboardTeacher color="#2447A5" /> },
+  { to: "/milestones", text: "Milestones", icon: <FaStar color="#F6995C" /> },
+  { to: "/videos", text: "Videos Gallery", icon: <FaVideo color="#2447A5" /> },
+  { to: "/book", text: "Book Appointment", icon: <FaCalendarCheck color="#F6995C" /> },
+  { to: "/payments", text: "Payments", icon: <FaCreditCard color="#2447A5" /> },
+  { to: "/subscribe", text: "Subscription", icon: <FaGift color="#F6995C" /> },
+  { to: "/testimonials", text: "Testimonials", icon: <FaSmile color="#2447A5" /> },
+  { to: "/questionnaire", text: "Questionnaire", icon: <FaQuestionCircle color="#F6995C" /> },
+  { to: "/ai-chat", text: "AI Chat", icon: <FaRobot color="#2447A5" /> },
+  { to: "/profile", text: "User Profile", icon: <FaUserCircle color="#F6995C" /> },
 ];
 
 // PUBLIC_INTERFACE
 /**
- * Responsive persistent left sidebar navigation for all major items.
- * - Stays fixed left on desktop, collapsible via hamburger button on mobile.
- * - Highlights active section, hides on mobile unless toggled.
+ * Enhanced, modern left sidebar navigation (cheerful, playful theme).
+ * - Fixed on desktop, animated drawer on mobile.
+ * - Colorful, rounded, with themed icons and hover/focus effects.
+ * - Fully responsive and accessible.
  */
 function Sidebar() {
   const { user } = useContext(SupabaseContext);
   const [open, setOpen] = useState(false);
   const location = useLocation();
-
-  // Don't render on certain full-width routes (optional)
-  // Example: const hideOnRoutes = ["/auth", "/admin"];
-  // if (hideOnRoutes.includes(location.pathname)) return null;
 
   // If user not signed in, disable "User Profile" link
   const finalLinks = SIDEBAR_LINKS.map(link =>
@@ -44,27 +56,55 @@ function Sidebar() {
       : link
   );
 
+  // Accessible ARIA labeling for nav
   return (
     <>
       {/* Hamburger Button (shown only on mobile) */}
       <button
         className="sidebar-hamburger"
-        aria-label={open ? "Close menu" : "Open menu"}
+        aria-label={open ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={open}
+        aria-controls="sidebar-nav"
         onClick={() => setOpen(!open)}
       >
         {open ? <FaTimes /> : <FaBars />}
       </button>
-      <nav className={`sidebar-nav${open ? " open" : ""}`}>
+      <nav
+        className={`sidebar-nav${open ? " open" : ""}`}
+        id="sidebar-nav"
+        aria-label="Primary site navigation"
+        tabIndex={-1}
+      >
+        {/* Sidebar fun title bubble */}
         <div className="sidebar-title">
-          <span role="img" aria-label="logo" style={{ marginRight: 8 }}>🗣️</span>{" "}
-          <span>Speech Bridge</span>
+          <span
+            style={{
+              display: "inline-block",
+              borderRadius: "50%",
+              width: 32,
+              height: 32,
+              marginRight: 10,
+              background: "linear-gradient(135deg, #F6995C 36%, #D2E6FA 100%)",
+              boxShadow: "0 2px 10px #f6995c19",
+              textAlign: "center",
+              lineHeight: "34px",
+              verticalAlign: "middle"
+            }}
+            aria-hidden="true"
+          >
+            <FaRobot style={{ color: "#2447A5", fontSize: 18, verticalAlign: "middle" }} />
+          </span>
+          <span style={{ fontWeight: 800, letterSpacing: "0.021em" }}>
+            Speech <span style={{ color: "#F6995C" }}>Bridge</span>
+          </span>
         </div>
         <ul>
-          {finalLinks.map(({ to, text, disabled }) => (
+          {finalLinks.map(({ to, text, icon, disabled }) => (
             <li key={to}>
               {disabled ? (
-                <span className="sidebar-link disabled">{text}</span>
+                <span className="sidebar-link disabled" tabIndex={-1} aria-disabled="true">
+                  <span className="sidebar-link-icon">{icon}</span>{text}
+                </span>
               ) : (
                 <NavLink
                   to={to}
@@ -77,21 +117,22 @@ function Sidebar() {
                   }
                   onClick={() => setOpen(false)}
                   end={to === "/"}
+                  aria-current={
+                    location.pathname === to ||
+                    (to !== "/" && location.pathname.startsWith(to))
+                      ? "page" : undefined
+                  }
                 >
-                  {text}
-                  {to === "/profile" && user && (
-                    <FaUserCircle
-                      size={18}
-                      style={{ marginLeft: 6, verticalAlign: "middle" }}
-                    />
-                  )}
+                  <span className="sidebar-link-icon">{icon}</span>
+                  <span className="sidebar-link-text">{text}</span>
                 </NavLink>
               )}
             </li>
           ))}
         </ul>
       </nav>
-      {open && <div className="sidebar-backdrop" onClick={() => setOpen(false)} />}
+      {/* Mobile: overlay backdrop for navigation drawer */}
+      {open && <div className="sidebar-backdrop" onClick={() => setOpen(false)} tabIndex={-1} />}
     </>
   );
 }
