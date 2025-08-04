@@ -86,7 +86,6 @@ function Navbar() {
     { to: "/about", text: "About Raashi" },
     { to: "/videos", text: "Videos" },
     { to: "/book", text: "Book Appointment" },
-    { to: "/subscribe", text: "Subscribe" },
     { to: "/testimonials", text: "Testimonials" },
     { to: "/ai-chat", text: "Ask AI" }
     // Admin link dynamically below

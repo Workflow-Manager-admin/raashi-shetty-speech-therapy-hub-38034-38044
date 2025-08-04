@@ -30,7 +30,6 @@ const SIDEBAR_LINKS = [
   { to: "/videos", text: "Videos Gallery", icon: <FaVideo color="#2447A5" /> },
   { to: "/book", text: "Book Appointment", icon: <FaCalendarCheck color="#F6995C" /> },
   { to: "/payments", text: "Payments", icon: <FaCreditCard color="#2447A5" /> },
-  { to: "/subscribe", text: "Subscription", icon: <FaGift color="#F6995C" /> },
   { to: "/testimonials", text: "Testimonials", icon: <FaSmile color="#2447A5" /> },
   { to: "/questionnaire", text: "Questionnaire", icon: <FaQuestionCircle color="#F6995C" /> },
   { to: "/ai-chat", text: "AI Chat", icon: <FaRobot color="#2447A5" /> },

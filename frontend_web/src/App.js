@@ -9,7 +9,6 @@ import AboutRaashi from "./components/AboutRaashi";
 import VideosGallery from "./components/VideosGallery";
 import Booking from "./components/Booking";
 import Payments from "./components/Payments";
-import Subscription from "./components/Subscription";
 import Testimonials from "./components/Testimonials";
 import Questionnaire from "./components/Questionnaire";
 import AIChat from "./components/AIChat";
@@ -138,7 +137,6 @@ function App() {
                   <Route path="/videos" element={<VideosGallery />} />
                   <Route path="/book" element={<Booking />} />
                   <Route path="/payments" element={<Payments />} />
-                  <Route path="/subscribe" element={<Subscription />} />
                   <Route path="/testimonials" element={<Testimonials />} />
                   <Route path="/ai-chat" element={<AIChat />} />
                   <Route path="/profile" element={
