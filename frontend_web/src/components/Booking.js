@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { SupabaseContext } from "../App";
+import PaymentDialog from "./PaymentDialog";
 import "./Booking.css";
 
 // PUBLIC_INTERFACE
@@ -13,16 +14,36 @@ function Booking() {
   const { supabase, user } = useContext(SupabaseContext);
   const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState("");
+  const [showPayment, setShowPayment] = useState(false);
+  const [pendingForm, setPendingForm] = useState(null);
 
+  // Set your real price here (in INR or as needed)
+  const APPT_PRICE = 499;
+
+  // Step 1: On submit booking details, show Payment Dialog instead of immediate submit
   const onSubmit = async (data) => {
     setFormError("");
+    setPendingForm(data);
+    setShowPayment(true);
+  };
+
+  // Step 2: Called AFTER payment success to finalize booking in DB
+  const handlePaymentSuccess = async (paymentInfo) => {
+    setShowPayment(false);
     try {
-      // Save appointment request; in real scenario, integrate with real calendar/notify therapist
-      await supabase.from("appointments").insert([{ ...data, user_id: user?.id ?? null }]);
+      // Insert appointment with payment data as well (optionally add payment ref)
+      await supabase.from("appointments").insert([{ 
+        ...pendingForm, 
+        user_id: user?.id ?? null,
+        payment_ref: paymentInfo.txnId,
+        paid_amount: paymentInfo.amount
+      }]);
       setSubmitted(true);
       reset();
     } catch (e) {
       setFormError("Something went wrong booking your appointment. Please try again.");
+    } finally {
+      setPendingForm(null);
     }
   };
 
@@ -107,9 +128,16 @@ function Booking() {
             </label>
           </div>
           <button className="btn booking-btn" type="submit" disabled={isSubmitting || submitted}>
-            {isSubmitting ? "Booking..." : "Book Appointment"}
+            {isSubmitting ? "Booking..." : `Pay & Book (₹${APPT_PRICE})`}
           </button>
         </form>
+        <PaymentDialog
+          visible={showPayment}
+          onClose={() => setShowPayment(false)}
+          purpose="Appointment Booking Payment"
+          amount={APPT_PRICE}
+          onSuccess={handlePaymentSuccess}
+        />
       </div>
     </section>
   );
