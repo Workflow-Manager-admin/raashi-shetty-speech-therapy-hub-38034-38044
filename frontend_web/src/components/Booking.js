@@ -4,53 +4,113 @@ import { SupabaseContext } from "../App";
 import "./Booking.css";
 
 // PUBLIC_INTERFACE
-/** Booking form for appointments (demo, can be connected to backend calendar/supabase for real use) */
+/**
+ * Modern, accessible, and visually striking appointment booking form for Speech Bridge.
+ * Features luxury card layout, clear feedback, mobile-first design, and friendly visual cues.
+ */
 function Booking() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
   const { supabase, user } = useContext(SupabaseContext);
   const [submitted, setSubmitted] = useState(false);
+  const [formError, setFormError] = useState("");
 
   const onSubmit = async (data) => {
-    // Save appointment request; in real scenario, integrate with real calendar/notify therapist
-    await supabase.from("appointments").insert([{ ...data, user_id: user?.id ?? null }]);
-    setSubmitted(true);
-    reset();
+    setFormError("");
+    try {
+      // Save appointment request; in real scenario, integrate with real calendar/notify therapist
+      await supabase.from("appointments").insert([{ ...data, user_id: user?.id ?? null }]);
+      setSubmitted(true);
+      reset();
+    } catch (e) {
+      setFormError("Something went wrong booking your appointment. Please try again.");
+    }
   };
 
   return (
     <section className="booking-section">
-      <h2>Book an Appointment</h2>
-      <p>
-        Fill in your details to request a session with Raashi Shetty. A confirmation will be sent to your email.
-      </p>
-      {submitted && (
-        <div className="booking-success">
-          🎉 Thank you for booking! You'll receive a confirmation soon.
-        </div>
-      )}
-      <form className="booking-form" onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          Your Name
-          <input {...register("name", { required: true })} placeholder="Full Name" />
-        </label>
-        <label>
-          Email
-          <input type="email" {...register("email", { required: true })} placeholder="Email" />
-        </label>
-        <label>
-          Preferred Date
-          <input type="date" {...register("preferredDate", { required: true })} />
-        </label>
-        <label>
-          Preferred Time
-          <input type="time" {...register("preferredTime", { required: true })} />
-        </label>
-        <label>
-          Message to Therapist (optional)
-          <textarea {...register("message")} placeholder="Describe your concern or any questions" />
-        </label>
-        <button className="btn booking-btn" type="submit">Book Appointment</button>
-      </form>
+      <div className="booking-card-outer">
+        <div className="booking-card-brand-accent" />
+        <form className="booking-form" onSubmit={handleSubmit(onSubmit)} autoComplete="off" spellCheck="false">
+          <h2>
+            <span role="img" aria-label="calendar" style={{ marginRight: 8, fontSize: "1.1em" }}>📅</span>
+            Book Your Appointment
+          </h2>
+          <p className="booking-subtitle">
+            Fill in your details to request a session with <span className="booking-highlight">Raashi Shetty</span>.
+            <br />
+            <span style={{ fontSize: "0.95em" }}>A confirmation will be emailed to you shortly.</span>
+          </p>
+          {formError && <div className="booking-form-error">{formError}</div>}
+          {submitted && (
+            <div className="booking-success">
+              🎉 Thank you for booking! You'll receive a confirmation soon.
+            </div>
+          )}
+          <div className="booking-fields">
+            <label>
+              <span>Your Name <span className="booking-required">*</span></span>
+              <input
+                {...register("name", { required: "Please enter your name." })}
+                placeholder="Full Name"
+                aria-invalid={!!errors.name}
+                className={errors.name ? "booking-err" : ""}
+              />
+              {errors.name && <span className="booking-field-error">{errors.name.message}</span>}
+            </label>
+            <label>
+              <span>Email <span className="booking-required">*</span></span>
+              <input
+                type="email"
+                {...register("email", {
+                  required: "Please enter your email.",
+                  pattern: {
+                    value: /^[^@]+@[^@]+\.[^@]+$/,
+                    message: "Enter a valid email.",
+                  }
+                })}
+                placeholder="you@email.com"
+                aria-invalid={!!errors.email}
+                className={errors.email ? "booking-err" : ""}
+              />
+              {errors.email && <span className="booking-field-error">{errors.email.message}</span>}
+            </label>
+            <div className="booking-row">
+              <label>
+                <span>Preferred Date <span className="booking-required">*</span></span>
+                <input
+                  type="date"
+                  {...register("preferredDate", { required: "Pick a date for the appointment." })}
+                  aria-invalid={!!errors.preferredDate}
+                  className={errors.preferredDate ? "booking-err" : ""}
+                  min={new Date().toISOString().split('T')[0]}
+                />
+                {errors.preferredDate && <span className="booking-field-error">{errors.preferredDate.message}</span>}
+              </label>
+              <label>
+                <span>Preferred Time <span className="booking-required">*</span></span>
+                <input
+                  type="time"
+                  {...register("preferredTime", { required: "Please select a time slot." })}
+                  aria-invalid={!!errors.preferredTime}
+                  className={errors.preferredTime ? "booking-err" : ""}
+                />
+                {errors.preferredTime && <span className="booking-field-error">{errors.preferredTime.message}</span>}
+              </label>
+            </div>
+            <label>
+              <span>Message to Therapist <span className="booking-optional">(optional)</span></span>
+              <textarea
+                {...register("message")}
+                placeholder="Describe your concern or any questions"
+                rows={3}
+              />
+            </label>
+          </div>
+          <button className="btn booking-btn" type="submit" disabled={isSubmitting || submitted}>
+            {isSubmitting ? "Booking..." : "Book Appointment"}
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
