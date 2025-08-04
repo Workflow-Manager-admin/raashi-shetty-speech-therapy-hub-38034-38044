@@ -5,15 +5,26 @@ import "./VideosGallery.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+/*
+  Video Gallery component for Speech Bridge by Raashi Shetty
+
+  - Displays a curated, real selection of current YouTube speech therapy and communication development videos.
+  - No placeholder or irrelevant videos included.
+  - Each video shows the embedded YouTube player, clear video title, and a short description.
+  - Data is sourced from `speech_therapy_videos_curated.json` (make future updates there).
+  - Modern, clean carousel UI styled per site brand colors.
+*/
+
 // PUBLIC_INTERFACE
 /**
- * Gallery section for therapy/awareness videos using react-slick carousel.
- * Loads video list from curated JSON and displays each in a slider.
+ * Curated therapy/awareness video gallery.
+ * Shows ONLY real, relevant YouTube videos from a maintained JSON file.
+ * Videos include title, embed, and short description as a modern carousel.
  */
 function VideosGallery() {
   const [videos, setVideos] = useState([]);
 
-  // Load videos from curated JSON. Webpack resolves import.
+  // Load curated videos JSON (edit speech_therapy_videos_curated.json to update selection)
   useEffect(() => {
     import("./speech_therapy_videos_curated.json").then(data => {
       setVideos(data.default || data);
