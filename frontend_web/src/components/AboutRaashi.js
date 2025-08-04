@@ -2,10 +2,14 @@ import React from "react";
 import "./AboutRaashi.css";
 
 // PUBLIC_INTERFACE
-/** Informational section about Raashi Shetty */
+/** Informational section about Raashi Shetty with premium, playful, and inviting intro and background. */
 function AboutRaashi() {
   return (
     <section className="about-raashi">
+      {/* Floating bubble/flair accents for playful, child-centric look */}
+      <span className="about-float-bubble about-float-bubble-1" aria-hidden="true"></span>
+      <span className="about-float-bubble about-float-bubble-2" aria-hidden="true"></span>
+      <span className="about-float-bubble about-float-bubble-3" aria-hidden="true"></span>
       <div className="about-inner">
         <img
           src="https://cdn.pixabay.com/photo/2017/02/15/12/12/child-2065537_1280.jpg"
