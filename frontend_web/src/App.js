@@ -83,7 +83,18 @@ function App() {
                     element={
                       <>
                         <HeroSection />
-                        <div className="homepage-sections-lux">
+                        {/* 
+                          Force identical styling/layout for AboutRaashi block on both home and /about page. 
+                          Propagate explicit margin and maxWidth for bulletproof consistency.
+                        */}
+                        <div
+                          className="homepage-sections-lux"
+                          style={{
+                            margin: "3.6rem auto 2.1rem auto",
+                            maxWidth: "1260px",
+                            padding: "0 1rem"
+                          }}
+                        >
                           <section className="lux-block about-block">
                             <AboutRaashi />
                           </section>
@@ -108,7 +119,14 @@ function App() {
                   <Route
                     path="/about"
                     element={
-                      <div className="homepage-sections-lux">
+                      <div
+                        className="homepage-sections-lux"
+                        style={{
+                          margin: "3.6rem auto 2.1rem auto",
+                          maxWidth: "1260px",
+                          padding: "0 1rem"
+                        }}
+                      >
                         <section className="lux-block about-block">
                           <AboutRaashi />
                         </section>
