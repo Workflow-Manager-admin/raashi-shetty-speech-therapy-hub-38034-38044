@@ -4,10 +4,14 @@ import { SupabaseContext } from "../App";
 import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
 import "./Sidebar.css";
 
-// Main navigation entries
+/**
+ * Main navigation entries.
+ * Ensures 'Home' ("/") is always present for site entry consistency.
+ */
 const SIDEBAR_LINKS = [
+  { to: "/", text: "Home" },
   { to: "/about", text: "About Raashi" },
-  { to: "/milestones", text: "Milestones" }, // Added milestones to sidebar navigation
+  { to: "/milestones", text: "Milestones" },
   { to: "/videos", text: "Videos Gallery" },
   { to: "/book", text: "Book Appointment" },
   { to: "/payments", text: "Payments" },
