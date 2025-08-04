@@ -7,6 +7,7 @@ import "./Sidebar.css";
 // Main navigation entries
 const SIDEBAR_LINKS = [
   { to: "/about", text: "About Raashi" },
+  { to: "/milestones", text: "Milestones" }, // Added milestones to sidebar navigation
   { to: "/videos", text: "Videos Gallery" },
   { to: "/book", text: "Book Appointment" },
   { to: "/payments", text: "Payments" },
